@@ -1,0 +1,77 @@
+{
+  "gold": {
+    "name": "Gold",
+    "weight": 15,
+    "description": "Stonks \uD83D\uDC4D"
+  },
+  "wood": {
+    "name": "Wood",
+    "weight": 1,
+    "description": "Wood wood wood"
+  },
+  "food": {
+    "name": "Food",
+    "weight": 1,
+    "description": "*nom nom nom*"
+  },
+  "water": {
+    "name": "Water",
+    "weight": 1,
+    "description": "A boh'oh o' woh'oh \uD83C\uDDEC\uD83C\uDDE7"
+  },
+  "bait": {
+    "name": "Bait",
+    "weight": 1,
+    "description": "Boight"
+  },
+  "stone": {
+    "name": "Stone",
+    "weight": 3,
+    "description": "Thwomp"
+  },
+  "iron": {
+    "name": "Iron",
+    "weight": 5,
+    "description": "Iron! *clang*"
+  },
+  "coal": {
+    "name": "Coal",
+    "weight": 3,
+    "description": "An unclean energy source"
+  },
+  "steel": {
+    "name": "Steel",
+    "weight": 10,
+    "description": "Steel! *CLANG*"
+  },
+  "sulfur": {
+    "name": "Sulfur",
+    "weight": 3,
+    "description": "HAHA PEW PEW PEW"
+  },
+  "platinum": {
+    "name": "Platinum",
+    "weight": 20,
+    "description": "plotinumb"
+  },
+  "diamond": {
+    "name": "Diamond",
+    "weight": 30,
+    "description": "A hard material"
+  },
+  "ancient_alloy": {
+    "name": "Ancient Alloy",
+    "weight": 100,
+    "description": "Not ancient debris"
+  },
+  "radiant_alloy": {
+    "name": "Radiant Alloy",
+    "weight": 100,
+    "description": "Shinier than a diamond"
+  },
+  "apocalyptic_alloy": {
+    "name": "Apocalyptic Alloy",
+    "weight": 100,
+    "description": "If you got to this point, congrats!"
+  }
+}

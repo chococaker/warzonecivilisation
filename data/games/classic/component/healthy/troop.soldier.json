@@ -1,0 +1,8 @@
+{
+  "max_health": 5,
+  "healed_amount_per_deduction": 1,
+  "cost": {
+    "gold": 3
+  },
+  "max_heal_per_round": 2
+}

@@ -1,0 +1,18 @@
+{
+  "width": 1028,
+  "height": 512,
+
+  "texture": "assets/map.png",
+
+  "base-build-size": 50,
+  "player_count": 8,
+
+  "tile_types": [
+    "land",
+    "forest",
+    "beach",
+    "mountain",
+    "ocean",
+    "river"
+  ]
+}

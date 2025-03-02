@@ -1,0 +1,22 @@
+{
+  "name": "Soldier",
+
+  "components": {
+    "healthy": "troop.type1",
+    "bought": {
+      "era": 0,
+      "cost": {
+        "gold": "2"
+      }
+    },
+    "movable": {
+      "compatible-tiles": [
+        "land",
+        "beach"
+      ],
+      "resources_per_move": {
+        "food": 5
+      }
+    }
+  }
+}

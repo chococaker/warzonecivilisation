@@ -1,0 +1,19 @@
+{
+  "name": "Base",
+
+  "components": {
+    "phylactery": {},
+    "healthy": {
+      "max_health": 100,
+      "full_heal_cost": {
+        "gold": 100
+      },
+      "max_heal_per_round": 5
+    },
+    "producer": {
+      "materials": {
+        "gold": 5
+      }
+    }
+  }
+}
