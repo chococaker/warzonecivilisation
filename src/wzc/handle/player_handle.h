@@ -30,13 +30,13 @@ namespace wzc {
         
         GamePlayer& get() const; // same as getStaged()
         bool exists() const; // same as existsStaged()
+
+        bool existsIn(const GameState* gameState) const;
+        GamePlayer& getFrom(GameState* gameState) const;
         
     private:
         std::string id;
         Game* game;
-        
-        bool existsIn(const GameState* gameState) const;
-        GamePlayer& getFrom(GameState* gameState) const;
     };
 }
 

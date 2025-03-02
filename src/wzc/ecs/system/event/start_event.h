@@ -5,7 +5,8 @@
 
 namespace wzc {
     struct GameState;
-    
+
+    // marks the beginning of when events are run through
     struct StartEvent final : Event {
         explicit StartEvent(GameState* gameState);
         

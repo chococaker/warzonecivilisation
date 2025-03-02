@@ -10,13 +10,15 @@ namespace wzc {
     struct EventError;
     
     struct SystemHandler {
-        SystemHandler(const SystemHandler& other);
+        SystemHandler(const SystemHandler& other) = default;
         
         SystemHandler(const std::string& handledEventId,
-                      const std::function<void(Event*)>& handleFunction);
+                      const std::function<void(Event*)>& handleFunction,
+                      bool handleCancelled);
         
         const std::string handledEventId; // only handles certain event type
         const std::function<void(Event*)> handleFunction;
+        const bool handleCancelled;
         
         bool operator==(const SystemHandler& other) const;
     };

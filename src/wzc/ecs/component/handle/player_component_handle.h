@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "wzc/handle/player_handle.h"
+
 namespace wzc {
     struct PlayerComponent;
     struct Game;
@@ -13,7 +15,7 @@ namespace wzc {
     // outside them as well. Make sure to use getUnstaged() or existsUnstaged() instead outside of
     // event scope, though.
     struct PlayerComponentHandle final {
-        PlayerComponentHandle(std::string owner, std::string id, Game* game);
+        PlayerComponentHandle(const PlayerHandle& owner, std::string id, Game* game);
         PlayerComponentHandle(const PlayerComponentHandle& other) = default;
         
         bool isValid() const; // false if the original game no longer exists
@@ -30,14 +32,14 @@ namespace wzc {
         
         PlayerComponent& get() const; // same as getStaged()
         bool exists() const; // same as existsStaged()
-    
-    private:
-        const std::string owner;
-        const std::string id;
-        Game* game;
-        
+
         bool existsIn(GameState* gameState) const;
         PlayerComponent& getFrom(GameState* gameState) const;
+
+    private:
+        const PlayerHandle owner;
+        const std::string id;
+        Game* game;
     };
 }
 

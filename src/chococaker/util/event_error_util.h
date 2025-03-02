@@ -18,12 +18,10 @@ namespace ccaker {
     // If the component is not found, a ComponentNeededError is thrown, which is an EventError.
     template<typename T>
     T& getObjectComponent(wzc::GameState* gameState, const std::string& ownerId) {
-        if (!gameState->hasObjectComponent(ownerId, T::ID)) {
-            throw ComponentNeededError(T::ID, false, T::ID);
-        }
-        
+        wzc::GameObject& owner = gameState->getObject(ownerId);
+
         try {
-            T& component = gameState->getObjectComponent<T>(ownerId);
+            T& component = owner.getComponent<T>(T::ID);
             return component;
         } catch (const std::invalid_argument&) {
             throw wzc::IdTypeMismatch(T::ID, typeid(T));
@@ -34,12 +32,10 @@ namespace ccaker {
     // If the component is not found, a ComponentNeededError is thrown, which is an EventError.
     template<typename T>
     T& getPlayerComponent(wzc::GameState* gameState, const std::string& ownerId) {
-        if (!gameState->hasObjectComponent(ownerId, T::ID)) {
-            throw ComponentNeededError(T::ID, false, T::ID);
-        }
+        wzc::GamePlayer& owner = gameState->getPlayer(ownerId);
         
         try {
-            T& component = gameState->getPlayerComponent<T>(ownerId);
+            T& component = owner.getComponent<T>(T::ID);
             return component;
         } catch (const std::invalid_argument&) {
             throw wzc::IdTypeMismatch(T::ID, typeid(T));

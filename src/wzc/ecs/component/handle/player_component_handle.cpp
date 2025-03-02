@@ -1,15 +1,16 @@
 #include "player_component_handle.h"
 #include "wzc/game_state.h"
 #include "wzc/game.h"
-#include "wzc/ecs/ecs_manager.h"
 #include <stdexcept>
 #include <utility>
 
+#include "wzc/game_player.h"
+
 namespace wzc {
-    PlayerComponentHandle::PlayerComponentHandle(std::string owner,
+    PlayerComponentHandle::PlayerComponentHandle(const PlayerHandle& owner,
                                                  std::string id,
                                                  Game* game)
-            : owner(std::move(owner)), id(std::move(id)), game(game) { }
+            : owner(owner), id(std::move(id)), game(game) { }
     
     const std::string& PlayerComponentHandle::getId() const {
         return id;
@@ -96,11 +97,32 @@ namespace wzc {
     }
     
     bool PlayerComponentHandle::existsIn(GameState* gameState) const {
-        return gameState->hasPlayer(owner)
-               && gameState->hasPlayerComponent(owner, id);
+        if (!owner.existsIn(gameState)) {
+            return false;
+        }
+        const std::vector<PlayerComponent*>& components = owner.getFrom(gameState).getComponents();
+
+        for (const PlayerComponent* component : components) {
+            if (component->getTypeId() == id) {
+                return true;
+            }
+        }
+
+        return false;
     }
-    
+
     PlayerComponent& PlayerComponentHandle::getFrom(GameState* gameState) const {
-        return gameState->getPlayerComponent(owner, id);
+        if (!owner.existsIn(gameState)) {
+            throw std::invalid_argument("Player " + owner.getId() + " does not exist");
+        }
+        const std::vector<PlayerComponent*>& components = owner.getFrom(gameState).getComponents();
+
+        for (PlayerComponent* component : components) {
+            if (component->getTypeId() == id) {
+                return *component;
+            }
+        }
+
+        throw std::invalid_argument("Player component " + id + " does not exist");
     }
 }

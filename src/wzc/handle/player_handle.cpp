@@ -1,8 +1,6 @@
 #include "player_handle.h"
 #include "wzc/game_state.h"
 #include "wzc/game.h"
-#include "wzc/ecs/ecs_manager.h"
-#include <stdexcept>
 
 namespace wzc {
     PlayerHandle::PlayerHandle(const std::string& id,

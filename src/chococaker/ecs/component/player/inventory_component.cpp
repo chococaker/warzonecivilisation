@@ -33,10 +33,13 @@ namespace ccaker {
     }
     
     bool InventoryComponent::containsMaterials(const Inventory& materials) const {
-        return std::all_of(materials.begin(), materials.end(), [](const auto& material) {
-            const uint32_t amount = getMaterial(material);
-            return amount >= material.amount;
-        });
+        for (const auto& [materialId, amount] : materials) {
+            if (const uint32_t thisAmount = getMaterial(materialId); amount < thisAmount) {
+                return false;
+            }
+        }
+
+        return true;
     }
     
     uint32_t InventoryComponent::getMaterial(const std::string& material) const {

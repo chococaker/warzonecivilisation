@@ -3,7 +3,6 @@
 #include "ecs/system/event/start_event.h"
 #include "ecs/system/event/end_event.h"
 #include "game_state.h"
-#include "wzc/ecs/ecs_manager.h"
 #include "game_player.h"
 #include "game_object.h"
 #include "ecs/component/player/player_component.h"
@@ -62,7 +61,8 @@ namespace wzc {
     
     void Game::nextTurn() {
         assert(gameState != nullptr);
-        
+
+        // init next state with appropriate data
         GameState* nextState = new GameState(*gameState);
         
         size_t& nextStateTurn = nextState->currentTurn;
@@ -72,24 +72,22 @@ namespace wzc {
             nextStateTurn++;
         }
 
-        const EcsManager* ecsManager = nextState->ecsManager;
-        assert(ecsManager != nullptr);
-        
+        // propagate beginning event
         Event* startEvent = new StartEvent(gameState);
-        
         try {
-            ecsManager->propagate(startEvent);
+            propagate(startEvent);
         } catch (EventError& e) {
             e.event = startEvent;
             throw;
         }
-        
+
+        // propagate actual events
         while (!eventDeque.empty()) {
             Event* event = eventDeque.front();
             eventDeque.pop_front();
             
             try {
-                ecsManager->propagate(event);
+                propagate(event);
             } catch (EventError& e) {
                 e.event = event;
                 throw;
@@ -97,18 +95,28 @@ namespace wzc {
             
             delete event;
         }
-        
+
+
+        // propagate ending event
         Event* endEvent = new EndEvent(gameState);
-        
         try {
-            ecsManager->propagate(endEvent);
+            propagate(endEvent);
         } catch (EventError& e) {
             e.event = endEvent;
             throw;
         }
-        
+
+        // clean up game state
         delete gameState;
         gameState = nextState;
+    }
+
+    void Game::propagate(Event* ev) const {
+        for (const System* system : systems) {
+            assert(system != nullptr);
+
+            system->handle(ev);
+        }
     }
     
     tagMTRand* Game::getRand() const {
@@ -123,11 +131,11 @@ namespace wzc {
         return {object.getId(), this};
     }
     
-    PlayerComponentHandle Game::asHandle(const std::string& owner, const PlayerComponent& component) {
-        return {owner, component.getTypeId(), this};
+    PlayerComponentHandle Game::asHandle(const GamePlayer& owner, const PlayerComponent& component) {
+        return {asHandle(owner), component.getTypeId(), this};
     }
     
-    ObjectComponentHandle Game::asHandle(const std::string& owner, const ObjectComponent& component) {
-        return {owner, component.getTypeId(), this};
+    ObjectComponentHandle Game::asHandle(const GameObject& owner, const ObjectComponent& component) {
+        return {asHandle(owner), component.getTypeId(), this};
     }
 }

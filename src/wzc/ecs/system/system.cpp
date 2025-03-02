@@ -23,13 +23,11 @@ namespace wzc {
                 throw std::invalid_argument("Duplicate system in before & after: " + system);
         }
     }
-    
-    SystemHandler::SystemHandler(const SystemHandler& other)
-            : handledEventId(other.handledEventId), handleFunction(other.handleFunction) { }
-    
+
     SystemHandler::SystemHandler(const std::string& handledEventId,
-                                 const std::function<void(Event*)>& handleFunction)
-            : handledEventId(handledEventId), handleFunction(handleFunction) { }
+                                 const std::function<void(Event*)>& handleFunction,
+                                 bool handleCancelled)
+            : handledEventId(handledEventId), handleFunction(handleFunction), handleCancelled(handleCancelled) { }
     
     bool SystemHandler::operator==(const SystemHandler& other) const {
         return handledEventId == other.handledEventId;
@@ -38,8 +36,11 @@ namespace wzc {
     void System::handle(Event* e) const {
         assert(e != nullptr);
         
-        if (handlers.count(e->getTypeId()))
-            return handlers.at(e->getTypeId()).handleFunction(e);
+        if (handlers.count(e->getTypeId())) { // if handler exists
+            if (const SystemHandler& handler = handlers.at(e->getTypeId()); !handler.handleCancelled && !e->cancelled) { // handler operates when cancelled
+                return handler.handleFunction(e);
+            }
+        }
     }
     
     const std::string& System::getId() const {

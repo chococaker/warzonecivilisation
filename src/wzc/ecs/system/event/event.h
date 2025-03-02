@@ -9,12 +9,14 @@ namespace wzc {
     struct GameState;
     
     struct Event {
-        explicit Event(GameState* game) : game(game) {};
+        explicit Event(GameState* game) : game(game), cancelled(false) {}
         
         virtual const std::string& getTypeId() const = 0;
         virtual ~Event() = default;
         
         GameState* const game;
+
+        bool cancelled;
     };
     
     struct EventError : std::runtime_error {

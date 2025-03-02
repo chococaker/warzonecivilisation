@@ -2,8 +2,6 @@
 
 #include "wzc/ecs/component/entity/object_component.h"
 #include "wzc/game_state.h"
-#include "wzc/game_object.h"
-#include "wzc/ecs/ecs_manager.h"
 #include "wzc/game.h"
 #include "mtwister/mtwister.h"
 

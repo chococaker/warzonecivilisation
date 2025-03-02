@@ -1,6 +1,7 @@
 #ifndef WARZONECIVILISATION_PLAYER_COMPONENT_H
 #define WARZONECIVILISATION_PLAYER_COMPONENT_H
 
+#include <string>
 
 namespace wzc {
     struct PlayerComponent {

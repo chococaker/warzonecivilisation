@@ -6,7 +6,7 @@
 #include <cstdint>
 
 namespace wzc {
-    struct EcsManager;
+    struct ComponentManager;
     struct PlayerComponent;
     struct GameState;
     

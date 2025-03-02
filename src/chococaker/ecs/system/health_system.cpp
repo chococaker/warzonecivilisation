@@ -12,6 +12,8 @@
 
 #include <cmath>
 
+#include "wzc/ecs/system/event/end_event.h"
+
 namespace ccaker {
     const std::string HealthSystem::ID = "scho@health";
 
@@ -30,11 +32,6 @@ namespace ccaker {
                                                                  attackerObj);
 
         healthyComponent.damage(damage);
-
-        if (healthyComponent.isDead()) {
-            game
-        }
-
     }
 
     void heal(wzc::Event* ev) {
@@ -54,24 +51,40 @@ namespace ccaker {
 
         const double healPercent = static_cast<double>(e->amountHeal) / healthyComponent.maxHealth;
 
-        for (const auto& entry: healableComponent.fullHealCost) {
-            uint32_t cost = static_cast<uint32_t>(std::ceil(entry.second * healPercent));
+        for (const auto& [costMaterialId, fullHealCost]: healableComponent.fullHealCost) {
+            uint32_t cost = static_cast<uint32_t>(std::ceil(fullHealCost * healPercent));
 
-            uint32_t amountHad = inventoryComponent.getMaterial(entry.first);
+            uint32_t amountHad = inventoryComponent.getMaterial(costMaterialId);
 
             if (amountHad < cost)
-                throw TooExpensiveError(entry.first, amountHad, cost);
+                throw TooExpensiveError(costMaterialId, amountHad, cost);
 
-            inventoryComponent.reduceMaterial(entry.first, cost);
+            inventoryComponent.reduceMaterial(costMaterialId, cost);
         }
 
         healthyComponent.heal(e->amountHeal);
     }
 
+    // perform cleanup (remove dead objects)
+    void fin(wzc::Event* ev) {
+        wzc::EndEvent* e = dynamic_cast<wzc::EndEvent*>(ev);
+
+        wzc::GameState* game = e->game;
+
+        // look for objects
+        for (const std::string& objId : game->getObjectIds()) {
+            wzc::GameObject& object = game->getObject(objId);
+
+            if (object.hasComponent(HealEvent::ID)) {
+                
+            }
+        }
+    }
+
     HealthSystem::HealthSystem()
         : System("scho@health", {
-                     {HealEvent::ID, heal},
-                     {DamageEvent::ID, attack}
+                     {HealEvent::ID, heal, false},
+                     {DamageEvent::ID, attack, false}
                  }) {
     }
 }
