@@ -8,16 +8,17 @@
 namespace wzc {
     struct Event;
     struct EventError;
+    struct GameState;
     
     struct SystemHandler {
         SystemHandler(const SystemHandler& other) = default;
         
         SystemHandler(const std::string& handledEventId,
-                      const std::function<void(Event*)>& handleFunction,
+                      const std::function<void(Event*, GameState*)>& handleFunction,
                       bool handleCancelled);
         
         const std::string handledEventId; // only handles certain event type
-        const std::function<void(Event*)> handleFunction;
+        const std::function<void(Event*, GameState*)> handleFunction;
         const bool handleCancelled;
         
         bool operator==(const SystemHandler& other) const;
@@ -38,7 +39,7 @@ namespace wzc {
                const std::unordered_set<std::string>& before = std::unordered_set<std::string>(),
                const std::unordered_set<std::string>& after = std::unordered_set<std::string>());
         
-        void handle(Event* e) const;
+        void handle(Event* e, GameState* gameState) const;
         
         virtual const std::string& getId() const = 0;
         

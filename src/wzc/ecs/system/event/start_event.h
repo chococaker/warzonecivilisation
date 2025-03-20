@@ -8,7 +8,7 @@ namespace wzc {
 
     // marks the beginning of when events are run through
     struct StartEvent final : Event {
-        explicit StartEvent(GameState* gameState);
+        StartEvent() = default;
         
         const std::string& getTypeId() const override {
             return ID;

@@ -6,8 +6,7 @@ namespace ccaker {
     const std::string DamageEvent::ID = "echo@damage";
     const std::string OverhealEventError::ID = "rcho@overheal";
     
-    HealEvent::HealEvent(wzc::GameState* game,
-                         const uint16_t amountHeal,
+    HealEvent::HealEvent(const uint16_t amountHeal,
                          const wzc::ObjectHandle& healedObj)
-            : Event(game), amountHeal(amountHeal), healedObj(healedObj) { }
+            : amountHeal(amountHeal), healedObj(healedObj) { }
 }

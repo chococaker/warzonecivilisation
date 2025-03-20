@@ -1,6 +1,7 @@
 #ifndef WARZONECIVILISATION_GENERIC_ERRORS_H
 #define WARZONECIVILISATION_GENERIC_ERRORS_H
 
+#include <cstdint>
 #include <string>
 #include "wzc/ecs/system/event/event.h"
 

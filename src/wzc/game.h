@@ -61,7 +61,7 @@ namespace wzc {
         
         tagMTRand* rand; // games will always be on the same thread
 
-        void propagate(Event* ev) const;
+        void propagate(Event* ev, GameState* gameState) const;
         
         friend struct PlayerComponentHandle;
         friend struct ObjectComponentHandle;

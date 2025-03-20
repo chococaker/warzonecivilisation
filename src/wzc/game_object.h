@@ -31,6 +31,8 @@ namespace wzc {
 
         bool hasComponent(const std::string& componentTypeId) const;
 
+        bool markedForDestruction = false;
+
     private:
         std::string id;
         math::Vector2 location;

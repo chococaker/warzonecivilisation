@@ -1,7 +1,6 @@
 #ifndef WARZONECIVILISATION_EVENT_H
 #define WARZONECIVILISATION_EVENT_H
 
-#include <cstdint>
 #include <stdexcept>
 
 namespace wzc {
@@ -9,12 +8,10 @@ namespace wzc {
     struct GameState;
     
     struct Event {
-        explicit Event(GameState* game) : game(game), cancelled(false) {}
+        Event() : cancelled(false) {}
         
         virtual const std::string& getTypeId() const = 0;
         virtual ~Event() = default;
-        
-        GameState* const game;
 
         bool cancelled;
     };

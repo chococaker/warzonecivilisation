@@ -25,7 +25,7 @@ namespace wzc {
     }
 
     SystemHandler::SystemHandler(const std::string& handledEventId,
-                                 const std::function<void(Event*)>& handleFunction,
+                                 const std::function<void(Event*, GameState*)>& handleFunction,
                                  bool handleCancelled)
             : handledEventId(handledEventId), handleFunction(handleFunction), handleCancelled(handleCancelled) { }
     
@@ -33,12 +33,12 @@ namespace wzc {
         return handledEventId == other.handledEventId;
     }
     
-    void System::handle(Event* e) const {
+    void System::handle(Event* e, GameState* gameState) const {
         assert(e != nullptr);
         
         if (handlers.count(e->getTypeId())) { // if handler exists
             if (const SystemHandler& handler = handlers.at(e->getTypeId()); !handler.handleCancelled && !e->cancelled) { // handler operates when cancelled
-                return handler.handleFunction(e);
+                return handler.handleFunction(e, gameState);
             }
         }
     }

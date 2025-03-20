@@ -14,8 +14,7 @@ namespace wzc {
 
 namespace ccaker {
     struct HealEvent final : wzc::Event {
-        HealEvent(wzc::GameState* game,
-                  uint16_t amountHeal,
+        HealEvent(uint16_t amountHeal,
                   const wzc::ObjectHandle& healedObj);
         
         const std::string& getTypeId() const override {
@@ -29,11 +28,10 @@ namespace ccaker {
     };
     
     struct DamageEvent final : wzc::Event {
-        DamageEvent(wzc::GameState* game,
-                    const uint16_t damage,
+        DamageEvent(const uint16_t damage,
                     const wzc::ObjectHandle& attacker,
                     const wzc::ObjectHandle& attacked)
-                : Event(game), damage(damage), attacker(attacker), attacked(attacked) { }
+                : damage(damage), attacker(attacker), attacked(attacked) { }
         
         const std::string& getTypeId() const override {
             return ID;

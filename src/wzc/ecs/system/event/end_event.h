@@ -8,7 +8,7 @@ namespace wzc {
 
     // marks the end of when events are run through
     struct EndEvent final : Event {
-        explicit EndEvent(GameState* gameState);
+        EndEvent() = default;
         
         const std::string& getTypeId() const override {
             return ID;

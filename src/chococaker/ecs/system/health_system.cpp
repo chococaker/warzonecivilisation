@@ -17,10 +17,9 @@
 namespace ccaker {
     const std::string HealthSystem::ID = "scho@health";
 
-    void attack(wzc::Event* ev) {
+    void attack(wzc::Event* ev, wzc::GameState* game) {
         auto* e = dynamic_cast<DamageEvent*>(ev);
 
-        wzc::GameState* game = e->game;
         const wzc::GameObject& attackerObj = e->attacker.get();
         const wzc::GameObject& attackedObj = e->attacked.get();
         const uint16_t damage = e->damage;
@@ -34,9 +33,8 @@ namespace ccaker {
         healthyComponent.damage(damage);
     }
 
-    void heal(wzc::Event* ev) {
+    void heal(wzc::Event* ev, wzc::GameState* game) {
         HealEvent* e = dynamic_cast<HealEvent*>(ev);
-        wzc::GameState* game = e->game;
         wzc::GameObject& healedObj = e->healedObj.get();
 
         HealthyComponent& healthyComponent = getComponent<HealthyComponent>(game,
@@ -66,17 +64,11 @@ namespace ccaker {
     }
 
     // perform cleanup (remove dead objects)
-    void fin(wzc::Event* ev) {
-        wzc::EndEvent* e = dynamic_cast<wzc::EndEvent*>(ev);
-
-        wzc::GameState* game = e->game;
-
+    void fin(wzc::Event* ev, wzc::GameState* game) {
         // look for objects
-        for (const std::string& objId : game->getObjectIds()) {
-            wzc::GameObject& object = game->getObject(objId);
-
-            if (object.hasComponent(HealEvent::ID)) {
-                
+        for (const std::string& objId: game->getObjectIds()) {
+            if (wzc::GameObject& object = game->getObject(objId); object.hasComponent(HealEvent::ID)) {
+                object.markedForDestruction = true;
             }
         }
     }
@@ -84,7 +76,8 @@ namespace ccaker {
     HealthSystem::HealthSystem()
         : System("scho@health", {
                      {HealEvent::ID, heal, false},
-                     {DamageEvent::ID, attack, false}
+                     {DamageEvent::ID, attack, false},
+                     {wzc::EndEvent::ID, fin, false}
                  }) {
     }
 }
