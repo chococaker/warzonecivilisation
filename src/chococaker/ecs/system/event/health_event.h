@@ -7,7 +7,6 @@
 #include "wzc/handle/object_handle.h"
 
 namespace wzc {
-    struct GameState;
     struct GamePlayer;
     struct GameObject;
 }
@@ -44,7 +43,7 @@ namespace ccaker {
         const wzc::ObjectHandle& attacked;
     };
     
-    struct OverhealEventError : wzc::EventError {
+    struct OverhealEventError final : wzc::EventError {
         const std::string& getTypeId() const override {
             return ID;
         }

@@ -3,7 +3,7 @@
 namespace ccaker {
     const std::string LinearObstructionComponent::ID = "ocho@linear_obstruction";
 
-    LinearObstructionComponent::LinearObstructionComponent(const wzc::math::Vector2& endpoint, uint16_t width)
+    LinearObstructionComponent::LinearObstructionComponent(const wzc::math::Point2D& endpoint, uint16_t width)
             : endpoint(endpoint), width(width) {}
     
     wzc::ObjectComponent* LinearObstructionComponent::clone() const {

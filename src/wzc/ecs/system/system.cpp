@@ -5,7 +5,7 @@
 #include <utility>
 
 namespace wzc {
-    System::System(std::string  id,
+    System::System(std::string id,
                    const SystemHandlerSet& addedHandlers,
                    const std::unordered_set<std::string>& before,
                    const std::unordered_set<std::string>& after)

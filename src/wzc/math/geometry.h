@@ -2,24 +2,27 @@
 #define WARZONECIVILISATION_GEOMETRY_H
 
 #include <unordered_set>
-#include "wzc/math/vector2.h"
+#include "wzc/math/point2d.h"
 
 namespace wzc::math {
     struct LineSegment {
-        LineSegment(const Vector2& c1, const Vector2& c2);
+        LineSegment(const Point2D& c1, const Point2D& c2);
         LineSegment(const LineSegment& other) = default;
         
-        const Vector2& getC1() const;
-        const Vector2& getC2() const;
+        const Point2D& getC1() const;
+        const Point2D& getC2() const;
         double getSlope() const;
         coordinate_t getYIntercept() const;
         double getLength() const;
         bool intersects(const LineSegment& other) const;
-        
+
+        double perpDistance(const Point2D& point) const;
+        double perpDistance(const LineSegment& other) const;
+
         bool operator==(const LineSegment& other) const;
     private:
-        const Vector2 c1;
-        const Vector2 c2;
+        const Point2D c1;
+        const Point2D c2;
     };
     
     struct LineSegmentHash {

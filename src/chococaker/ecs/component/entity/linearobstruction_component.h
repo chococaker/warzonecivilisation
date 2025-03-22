@@ -2,15 +2,15 @@
 #define WARZONECIVILISATION_LINEAROBSTRUCTION_COMPONENT_H
 
 #include "wzc/ecs/component/entity/object_component.h"
-#include "wzc/math/vector2.h"
+#include "wzc/math/point2d.h"
 
 namespace ccaker {
-    struct LinearObstructionComponent final :  wzc::ObjectComponent {
-        LinearObstructionComponent(const wzc::math::Vector2& endpoint, uint16_t width);
+    struct LinearObstructionComponent final : wzc::ObjectComponent {
+        LinearObstructionComponent(const wzc::math::Point2D& endpoint, uint16_t width);
         
         [[nodiscard]] ObjectComponent* clone() const override;
         
-        wzc::math::Vector2 endpoint;
+        wzc::math::Point2D endpoint;
         uint16_t width;
         
         static const std::string ID;

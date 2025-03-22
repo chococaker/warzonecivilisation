@@ -6,7 +6,7 @@
 #include <cassert>
 
 namespace wzc {
-    GameObject::GameObject(const std::string& id, const math::Vector2& location)
+    GameObject::GameObject(const std::string& id, const math::Point2D& location)
             : id(id), location(location) { }
 
     GameObject::GameObject(const GameObject& other)
@@ -17,8 +17,12 @@ namespace wzc {
         }
     }
     
-    const math::Vector2& GameObject::getLocation() const {
+    const math::Point2D& GameObject::getLocation() const {
         return location;
+    }
+
+    void GameObject::setLocation(const math::Point2D& location) {
+        this->location = location;
     }
     
     const std::string& GameObject::getId() const {

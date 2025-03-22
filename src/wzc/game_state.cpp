@@ -58,7 +58,7 @@ namespace wzc {
         throw std::invalid_argument("Object " + objId + " does not exist");
     }
     
-    GameObject& GameState::getObject(const math::Vector2& location) {
+    GameObject& GameState::getObject(const math::Point2D& location) {
         for (GameObject& object : objects) {
             if (object.getLocation() == location) return object;
         }
@@ -110,7 +110,7 @@ namespace wzc {
         return players.size();
     }
     
-    GameObject& GameState::createObject(const math::Vector2& location, const ObjectPrefab& prefab) {
+    GameObject& GameState::createObject(const math::Point2D& location, const ObjectPrefab& prefab) {
         objects.emplace_back(prefab.prefabId + std::to_string(latestObjectId++), location);
         
         GameObject& obj = objects.back();
@@ -168,6 +168,26 @@ namespace wzc {
     
     ObjectComponentHandle GameState::asHandle(const GameObject& owner, const ObjectComponent& component) {
         return game->asHandle(owner, component);
+    }
+
+    std::vector<GamePlayer*> GameState::getPlayersWith(const std::string& componentId) {
+        std::vector<GamePlayer*> result;
+
+        for (GamePlayer& player : players) {
+            if (player.hasComponent(componentId)) result.emplace_back(&player);
+        }
+
+        return result;
+    }
+
+    std::vector<GameObject*> GameState::getObjectsWith(const std::string& componentId) {
+        std::vector<GameObject*> result;
+
+        for (GameObject& object : objects) {
+            if (object.hasComponent(componentId)) result.emplace_back(&object);
+        }
+
+        return result;
     }
     
     GameState::~GameState() {

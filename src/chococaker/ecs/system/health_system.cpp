@@ -1,6 +1,7 @@
 #include "health_system.h"
 
 #include "chococaker/ecs/system/event/health_event.h"
+#include "wzc/ecs/system/event/end_event.h"
 #include "chococaker/ecs/system/event/generic_errors.h"
 #include "wzc/game_state.h"
 #include "chococaker/ecs/component/entity/attacker_component.h"
@@ -12,23 +13,25 @@
 
 #include <cmath>
 
-#include "wzc/ecs/system/event/end_event.h"
-
 namespace ccaker {
     const std::string HealthSystem::ID = "scho@health";
 
     void attack(wzc::Event* ev, wzc::GameState* game) {
         auto* e = dynamic_cast<DamageEvent*>(ev);
 
-        const wzc::GameObject& attackerObj = e->attacker.get();
-        const wzc::GameObject& attackedObj = e->attacked.get();
+        wzc::GameObject& attackerObj = e->attacker.get();
+        wzc::GameObject& attackedObj = e->attacked.get();
         const uint16_t damage = e->damage;
 
-        auto& healthyComponent = getComponent<HealthyComponent>(game,
-                                                                attackedObj);
+        auto& healthyComponent = getComponent<HealthyComponent>(attackedObj);
 
-        auto attackerComponent = getComponent<AttackerComponent>(game,
-                                                                 attackerObj);
+        auto& attackerComponent = getComponent<AttackerComponent>(attackerObj);
+
+        if (double distance = attackerObj.getLocation().getDistance(attackedObj.getLocation()); distance < attackerComponent.range) {
+            throw OutOfRangeError(attackerObj.getId(), attackerComponent.range, distance);
+        }
+
+        attackerComponent.hasAttacked = true;
 
         healthyComponent.damage(damage);
     }
@@ -37,15 +40,11 @@ namespace ccaker {
         HealEvent* e = dynamic_cast<HealEvent*>(ev);
         wzc::GameObject& healedObj = e->healedObj.get();
 
-        HealthyComponent& healthyComponent = getComponent<HealthyComponent>(game,
-                                                                            healedObj);
-        HealableComponent& healableComponent = getComponent<HealableComponent>(game,
-                                                                               healedObj);
-        OwnedComponent& ownedComponent = getComponent<OwnedComponent>(game,
-                                                                      healedObj);
+        HealthyComponent& healthyComponent = getComponent<HealthyComponent>(healedObj);
+        HealableComponent& healableComponent = getComponent<HealableComponent>(healedObj);
+        OwnedComponent& ownedComponent = getComponent<OwnedComponent>(healedObj);
 
-        InventoryComponent& inventoryComponent = getComponent<InventoryComponent>(game,
-            ownedComponent.getOwner().get());
+        InventoryComponent& inventoryComponent = getComponent<InventoryComponent>(ownedComponent.getOwner().get());
 
         const double healPercent = static_cast<double>(e->amountHeal) / healthyComponent.maxHealth;
 
@@ -74,7 +73,7 @@ namespace ccaker {
     }
 
     HealthSystem::HealthSystem()
-        : System("scho@health", {
+        : System(ID, {
                      {HealEvent::ID, heal, false},
                      {DamageEvent::ID, attack, false},
                      {wzc::EndEvent::ID, fin, false}

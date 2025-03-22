@@ -8,7 +8,7 @@
 namespace ccaker {
     struct MovableComponent final : wzc::ObjectComponent {
         MovableComponent(uint16_t maxDistancePerFullMove,
-                         const std::vector<uint8_t> &traversableTileTypes,
+                         const std::vector<uint8_t>& traversableTileTypes,
                          double amountMovedThisTurn = 0);
 
         [[nodiscard]] double getAmountMovedThisTurn() const;
@@ -18,19 +18,17 @@ namespace ccaker {
         [[nodiscard]] bool exceedsLimit(double more = 0) const;
 
         void addAmountMoved(double amount);
-
         void subtractAmountMoved(double amount);
-
         void resetAmountMoved();
 
-        [[nodiscard]] ObjectComponent *clone() const override;
+        [[nodiscard]] ObjectComponent* clone() const override;
 
         uint16_t maxDistancePerFullMove;
         std::vector<uint8_t> traversableTileTypes;
 
         static const std::string ID;
 
-        const std::string &getTypeId() const override {
+        const std::string& getTypeId() const override {
             return ID;
         }
 

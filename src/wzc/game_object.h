@@ -1,7 +1,7 @@
 #ifndef WARZONECIVILISATION_GAME_OBJECT_H
 #define WARZONECIVILISATION_GAME_OBJECT_H
 
-#include "wzc/math/vector2.h"
+#include "wzc/math/point2d.h"
 #include "wzc/ecs/component/entity/object_component.h"
 
 #include <memory>
@@ -10,10 +10,11 @@
 
 namespace wzc {
     struct GameObject {
-        GameObject(const std::string& id, const math::Vector2& location);
+        GameObject(const std::string& id, const math::Point2D& location);
         GameObject(const GameObject& other);
         
-        [[nodiscard]] const math::Vector2& getLocation() const;
+        [[nodiscard]] const math::Point2D& getLocation() const;
+        void setLocation(const math::Point2D& location);
         
         const std::string& getId() const;
 
@@ -35,7 +36,7 @@ namespace wzc {
 
     private:
         std::string id;
-        math::Vector2 location;
+        math::Point2D location;
         std::vector<ObjectComponent*> components;
     };
 

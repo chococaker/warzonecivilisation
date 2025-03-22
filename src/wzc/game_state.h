@@ -19,7 +19,6 @@ struct tagMTRand;
 namespace wzc {
     struct GamePlayer;
     struct GameObject;
-    struct ComponentManager;
     struct ObjectComponent;
     struct PlayerComponent;
     struct Game;
@@ -37,7 +36,7 @@ namespace wzc {
         [[nodiscard]] GamePlayer& getPlayerAt(size_t turn);
         
         GameObject& getObject(const std::string& objId);
-        GameObject& getObject(const math::Vector2& location);
+        GameObject& getObject(const math::Point2D& location);
         GamePlayer& getPlayer(const std::string& playerId);
         
         bool hasPlayer(const std::string& playerId) const;
@@ -52,7 +51,7 @@ namespace wzc {
         // takes ownership of system
         void addSystem(System* system);
         
-        GameObject& createObject(const math::Vector2& location, const ObjectPrefab& prefab);
+        GameObject& createObject(const math::Point2D& location, const ObjectPrefab& prefab);
         GamePlayer& addPlayer(const PlayerPrefab& prefab);
 
         void removeObject(const std::string& objId);
@@ -65,7 +64,10 @@ namespace wzc {
         ObjectHandle asHandle(const GameObject& object);
         PlayerComponentHandle asHandle(const GamePlayer& owner, const PlayerComponent& component);
         ObjectComponentHandle asHandle(const GameObject& owner, const ObjectComponent& component);
-        
+
+        std::vector<GamePlayer*> getPlayersWith(const std::string& componentId);
+        std::vector<GameObject*> getObjectsWith(const std::string& componentId);
+
         ~GameState();
     private:
         std::vector<System*> systems;

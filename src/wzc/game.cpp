@@ -118,7 +118,7 @@ namespace wzc {
         std::vector<GameObject>& objects = gameState->objects;
         objects.erase(std::remove_if(
                           objects.begin(), objects.end(),
-                          [](const GameObject* o) { return o->markedForDestruction; }),
+                          [](const GameObject& o) { return o.markedForDestruction; }),
                       objects.end());
 
         // clear garbage

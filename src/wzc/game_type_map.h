@@ -1,7 +1,7 @@
 #ifndef WARZONECIVILISATION_GAMETYPEMAP_H
 #define WARZONECIVILISATION_GAMETYPEMAP_H
 
-#include "wzc/math/vector2.h"
+#include "wzc/math/point2d.h"
 
 namespace wzc {
     struct TileTypeMap {

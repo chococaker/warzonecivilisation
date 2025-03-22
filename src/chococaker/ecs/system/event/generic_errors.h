@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <string>
 #include "wzc/ecs/system/event/event.h"
+#include "wzc/math/point2d.h"
 
 namespace wzc {
     struct GamePlayer;
@@ -67,6 +68,47 @@ namespace ccaker {
         const std::string objId;
         const std::string where;
         
+        static const std::string ID;
+    };
+
+    struct OutOfRangeError final : wzc::EventError {
+        OutOfRangeError(const std::string& objId, double allowedRange, double attemptedRange);
+
+        const std::string& getTypeId() const override {
+            return ID;
+        }
+
+        const std::string objId;
+        double allowedRange;
+        double attemptedRange;
+
+        static const std::string ID;
+    };
+
+    struct ResourceLimitExceededError final : wzc::EventError {
+        ResourceLimitExceededError(const std::string& objId, double allowedRange, double attemptedRange);
+
+        const std::string& getTypeId() const override {
+            return ID;
+        }
+
+        const std::string objId;
+        double allowedRange;
+        double attemptedRange;
+
+        static const std::string ID;
+    };
+
+    struct EnteredBadZoneError final : wzc::EventError {
+        EnteredBadZoneError(const std::string& objId, const wzc::math::Point2D& to);
+
+        const std::string& getTypeId() const override {
+            return ID;
+        }
+
+        const std::string objId;
+        const wzc::math::Point2D to;
+
         static const std::string ID;
     };
 }
