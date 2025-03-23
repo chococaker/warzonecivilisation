@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_NULL_ENCOUNTER_H
-#define WARZONECIVILISATION_NULL_ENCOUNTER_H
+#pragma once
 
 #include <stdexcept>
 
@@ -16,5 +15,3 @@ namespace wzc {
         }
     }
 }
-
-#endif // WARZONECIVILISATION_NULL_ENCOUNTER_H

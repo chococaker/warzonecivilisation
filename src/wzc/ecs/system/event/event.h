@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_EVENT_H
-#define WARZONECIVILISATION_EVENT_H
+#pragma once
 
 #include <stdexcept>
 
@@ -32,5 +31,3 @@ namespace wzc {
         friend Game;
     };
 }
-
-#endif //WARZONECIVILISATION_EVENT_H

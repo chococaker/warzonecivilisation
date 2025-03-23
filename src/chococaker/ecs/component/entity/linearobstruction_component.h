@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_LINEAROBSTRUCTION_COMPONENT_H
-#define WARZONECIVILISATION_LINEAROBSTRUCTION_COMPONENT_H
+#pragma once
 
 #include "wzc/ecs/component/entity/object_component.h"
 #include "wzc/math/point2d.h"
@@ -20,6 +19,3 @@ namespace ccaker {
         }
     };
 }
-
-
-#endif //WARZONECIVILISATION_LINEAROBSTRUCTION_COMPONENT_H

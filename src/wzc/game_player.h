@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_GAME_PLAYER_H
-#define WARZONECIVILISATION_GAME_PLAYER_H
+#pragma once
 
 #include "ecs/component/player/player_component.h"
 
@@ -52,6 +51,3 @@ namespace wzc {
         }
     }
 }
-
-
-#endif //WARZONECIVILISATION_GAME_PLAYER_H

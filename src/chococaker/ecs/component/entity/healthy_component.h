@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_HEALTHY_COMPONENT_H
-#define WARZONECIVILISATION_HEALTHY_COMPONENT_H
+#pragma once
 
 #include <cstdint>
 #include "wzc/ecs/component/entity/object_component.h"
@@ -33,6 +32,3 @@ namespace ccaker {
         uint16_t health;
     };
 }
-
-
-#endif //WARZONECIVILISATION_HEALTHY_COMPONENT_H

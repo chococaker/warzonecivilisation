@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_GENERIC_ERRORS_H
-#define WARZONECIVILISATION_GENERIC_ERRORS_H
+#pragma once
 
 #include <cstdint>
 #include <string>
@@ -112,5 +111,3 @@ namespace ccaker {
         static const std::string ID;
     };
 }
-
-#endif

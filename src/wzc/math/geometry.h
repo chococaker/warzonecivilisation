@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_GEOMETRY_H
-#define WARZONECIVILISATION_GEOMETRY_H
+#pragma once
 
 #include <unordered_set>
 #include "wzc/math/point2d.h"
@@ -40,6 +39,3 @@ namespace wzc::math {
         size_t operator()(const Polygon& polygon) const noexcept;
     };
 }
-
-
-#endif //WARZONECIVILISATION_GEOMETRY_H

@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_ATTACKER_COMPONENT_H
-#define WARZONECIVILISATION_ATTACKER_COMPONENT_H
+#pragma once
 
 #include <cstdint>
 #include "wzc/ecs/component/entity/object_component.h"
@@ -21,6 +20,3 @@ namespace ccaker {
         }
     };
 }
-
-
-#endif //WARZONECIVILISATION_ATTACKER_COMPONENT_H

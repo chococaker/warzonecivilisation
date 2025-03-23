@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_GAME_STATE_H
-#define WARZONECIVILISATION_GAME_STATE_H
+#pragma once
 
 #include <memory>
 #include <stdexcept>
@@ -93,6 +92,3 @@ namespace wzc {
         friend struct ObjectHandle;
     };
 }
-
-
-#endif //WARZONECIVILISATION_GAME_STATE_H

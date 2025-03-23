@@ -1,5 +1,4 @@
-#ifndef WZC_COMPONENT_NOT_FOUND_H
-#define WZC_COMPONENT_NOT_FOUND_H
+#pragma once
 
 #include <stdexcept>
 
@@ -10,5 +9,3 @@ namespace wzc {
         const std::string componentTypeId;
     };
 }
-
-#endif // WZC_COMPONENT_NOT_FOUND_H

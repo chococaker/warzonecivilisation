@@ -1,8 +1,6 @@
-#ifndef WARZONECIVILISATION_BOUGHT_COMPONENT_H
-#define WARZONECIVILISATION_BOUGHT_COMPONENT_H
+#pragma once
 
 #include <unordered_map>
-#include <cstdint>
 #include "chococaker/defs/inventory_def.h"
 #include "wzc/ecs/component/entity/object_component.h"
 
@@ -21,6 +19,3 @@ namespace ccaker {
         }
     };
 }
-
-
-#endif //WARZONECIVILISATION_BOUGHT_COMPONENT_H

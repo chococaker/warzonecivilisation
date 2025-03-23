@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_SYSTEM_H
-#define WARZONECIVILISATION_SYSTEM_H
+#pragma once
 
 #include <string>
 #include <unordered_set>
@@ -54,6 +53,3 @@ namespace wzc {
         const std::unordered_set<std::string> after;
     };
 }
-
-
-#endif //WARZONECIVILISATION_SYSTEM_H

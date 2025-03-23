@@ -1,11 +1,9 @@
-#ifndef WARZONECIVILISATION_HEALABLE_COMPONENT_H
-#define WARZONECIVILISATION_HEALABLE_COMPONENT_H
+#pragma once
 
 #include "wzc/ecs/component/entity/object_component.h"
 #include "chococaker/defs/inventory_def.h"
 
 #include <unordered_map>
-#include <cstdint>
 
 namespace ccaker {
     struct HealableComponent final :  wzc::ObjectComponent {
@@ -23,5 +21,3 @@ namespace ccaker {
     };
 }
 
-
-#endif //WARZONECIVILISATION_HEALABLE_COMPONENT_H

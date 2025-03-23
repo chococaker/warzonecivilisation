@@ -1,15 +1,9 @@
-#ifndef WARZONECIVILISATION_HEALTH_EVENT_H
-#define WARZONECIVILISATION_HEALTH_EVENT_H
+#pragma once
 
 #include <string>
 #include <cstdint>
 #include "wzc/ecs/system/event/event.h"
 #include "wzc/handle/object_handle.h"
-
-namespace wzc {
-    struct GamePlayer;
-    struct GameObject;
-}
 
 namespace ccaker {
     struct HealEvent final : wzc::Event {
@@ -51,5 +45,3 @@ namespace ccaker {
         static const std::string ID;
     };
 }
-
-#endif

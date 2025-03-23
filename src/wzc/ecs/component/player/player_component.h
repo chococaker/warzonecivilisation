@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_PLAYER_COMPONENT_H
-#define WARZONECIVILISATION_PLAYER_COMPONENT_H
+#pragma once
 
 #include <string>
 
@@ -24,6 +23,3 @@ namespace wzc {
         }
     };
 }
-
-
-#endif //WARZONECIVILISATION_PLAYER_COMPONENT_H

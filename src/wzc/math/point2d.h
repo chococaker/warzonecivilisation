@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_POINT2D_H
-#define WARZONECIVILISATION_POINT2D_H
+#pragma once
 
 #include <cstdint>
 #include <string>
@@ -33,5 +32,3 @@ namespace wzc::math {
         return "(" + std::to_string(val.x) + "," + std::to_string(val.y) + ")";
     }
 }
-
-#endif //WARZONECIVILISATION_POINT2D_H

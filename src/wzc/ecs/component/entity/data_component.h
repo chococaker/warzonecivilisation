@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_DATA_COMPONENT_H
-#define WARZONECIVILISATION_DATA_COMPONENT_H
+#pragma once
 
 #include "object_component.h"
 
@@ -29,5 +28,3 @@ namespace wzc {
     
     const std::string DataComponent::ID = "o000@data";
 }
-
-#endif // WARZONECIVILISATION_DATA_COMPONENT_H

@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_OBJECT_COMPONENT_H
-#define WARZONECIVILISATION_OBJECT_COMPONENT_H
+#pragma once
 
 #include <string>
 
@@ -19,6 +18,3 @@ namespace wzc {
         }
     };
 }
-
-
-#endif //WARZONECIVILISATION_OBJECT_COMPONENT_H

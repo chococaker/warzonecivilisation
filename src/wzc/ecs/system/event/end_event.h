@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_END_EVENT_H
-#define WARZONECIVILISATION_END_EVENT_H
+#pragma once
 
 #include "event.h"
 
@@ -17,5 +16,3 @@ namespace wzc {
         static const std::string ID;
     };
 }
-
-#endif // WARZONECIVILISATION_END_EVENT_H

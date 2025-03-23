@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_GAMETYPEMAP_H
-#define WARZONECIVILISATION_GAMETYPEMAP_H
+#pragma once
 
 #include "wzc/math/point2d.h"
 
@@ -16,5 +15,3 @@ namespace wzc {
         [[nodiscard]] virtual uint8_t getUncheckedTileType(uint16_t x, uint16_t y) const = 0;
     };
 }
-
-#endif //WARZONECIVILISATION_GAMETYPEMAP_H

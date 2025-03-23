@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_OBJECT_PREFAB_H
-#define WARZONECIVILISATION_OBJECT_PREFAB_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -30,6 +29,3 @@ namespace wzc {
         friend GameState;
     };
 }
-
-
-#endif //WARZONECIVILISATION_OBJECT_PREFAB_H

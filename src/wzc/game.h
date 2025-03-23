@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_GAME_H
-#define WARZONECIVILISATION_GAME_H
+#pragma once
 
 #include <deque>
 #include <vector>
@@ -69,6 +68,3 @@ namespace wzc {
         friend struct ObjectHandle;
     };
 }
-
-
-#endif // WARZONECIVILISATION_GAME_H

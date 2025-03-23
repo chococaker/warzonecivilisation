@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_INVENTORY_COMPONENT_H
-#define WARZONECIVILISATION_INVENTORY_COMPONENT_H
+#pragma once
 
 #include <cstdint>
 #include <string>
@@ -38,6 +37,3 @@ namespace ccaker {
         Inventory inventory;
     };
 }
-
-
-#endif //WARZONECIVILISATION_INVENTORY_COMPONENT_H

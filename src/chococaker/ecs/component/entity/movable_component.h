@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_MOVABLE_COMPONENT_H
-#define WARZONECIVILISATION_MOVABLE_COMPONENT_H
+#pragma once
 
 #include <vector>
 #include <cstdint>
@@ -36,6 +35,3 @@ namespace ccaker {
         double amountMovedThisTurn;
     };
 }
-
-
-#endif //WARZONECIVILISATION_MOVABLE_COMPONENT_H

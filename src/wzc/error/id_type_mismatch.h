@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_ID_TYPE_MISMATCH_H
-#define WARZONECIVILISATION_ID_TYPE_MISMATCH_H
+#pragma once
 
 #include <stdexcept>
 #include <typeinfo>
@@ -12,5 +11,3 @@ namespace wzc {
         const std::type_info& typeInfo;
     };
 }
-
-#endif // WARZONECIVILISATION_ID_TYPE_MISMATCH_H

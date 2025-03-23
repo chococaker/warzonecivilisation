@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_GAME_OBJECT_H
-#define WARZONECIVILISATION_GAME_OBJECT_H
+#pragma once
 
 #include "wzc/math/point2d.h"
 #include "wzc/ecs/component/entity/object_component.h"
@@ -52,5 +51,3 @@ namespace wzc {
         }
     }
 }
-
-#endif //WARZONECIVILISATION_GAME_OBJECT_H

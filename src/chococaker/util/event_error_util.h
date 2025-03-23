@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_ERROR_UTIL
-#define WARZONECIVILISATION_ERROR_UTIL
+#pragma once
 
 #include <string>
 #include <stdexcept>
@@ -33,5 +32,3 @@ namespace ccaker {
         }
     }
 }
-
-#endif // WARZONECIVILISATION_ERROR_UTIL

@@ -1,5 +1,4 @@
-#ifndef MOVE_EVENT_H
-#define MOVE_EVENT_H
+#pragma once
 
 #include "wzc/math/point2d.h"
 #include "wzc/ecs/system/event/event.h"
@@ -20,5 +19,3 @@ namespace ccaker {
         const wzc::math::Point2D to;
     };
 }
-
-#endif //MOVE_EVENT_H

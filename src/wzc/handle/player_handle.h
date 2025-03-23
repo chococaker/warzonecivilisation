@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_PLAYER_HANDLE_H
-#define WARZONECIVILISATION_PLAYER_HANDLE_H
+#pragma once
 
 #include <string>
 
@@ -39,5 +38,3 @@ namespace wzc {
         Game* game;
     };
 }
-
-#endif // WARZONECIVILISATION_PLAYER_HANDLE_H

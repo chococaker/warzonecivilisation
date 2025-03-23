@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_LIMITED_COMPONENT_H
-#define WARZONECIVILISATION_LIMITED_COMPONENT_H
+#pragma once
 
 #include "wzc/ecs/component/entity/object_component.h"
 #include <cstdint>
@@ -20,6 +19,3 @@ namespace ccaker {
         }
     };
 }
-
-
-#endif //WARZONECIVILISATION_LIMITED_COMPONENT_H

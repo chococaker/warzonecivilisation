@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_PRODUCER_COMPONENT_H
-#define WARZONECIVILISATION_PRODUCER_COMPONENT_H
+#pragma once
 
 #include "wzc/ecs/component/entity/object_component.h"
 #include "chococaker/defs/inventory_def.h"
@@ -18,6 +17,3 @@ struct ProducerComponent final :  wzc::ObjectComponent {
         }
     };
 }
-
-
-#endif //WARZONECIVILISATION_PRODUCER_COMPONENT_H

@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_HEALING_SYSTEM_H
-#define WARZONECIVILISATION_HEALING_SYSTEM_H
+#pragma once
 
 #include "wzc/ecs/system/system.h"
 
@@ -16,5 +15,3 @@ namespace ccaker {
     };
 
 }
-
-#endif // WARZONECIVILISATION_HEALING_SYSTEM_H

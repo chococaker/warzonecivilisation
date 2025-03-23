@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_OWNED_COMPONENT_H
-#define WARZONECIVILISATION_OWNED_COMPONENT_H
+#pragma once
 
 #include <string>
 #include "wzc/ecs/component/entity/object_component.h"
@@ -25,5 +24,3 @@ namespace ccaker {
         wzc::PlayerHandle owner;
     };
 }
-
-#endif // WARZONECIVILISATION_OWNED_COMPONENT_H

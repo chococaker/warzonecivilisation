@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_RESEARCH_COMPONENT_H
-#define WARZONECIVILISATION_RESEARCH_COMPONENT_H
+#pragma once
 
 #include <cstdint>
 #include <vector>
@@ -28,6 +27,3 @@ namespace ccaker {
         uint16_t maxTier;
     };
 }
-
-
-#endif //WARZONECIVILISATION_RESEARCH_COMPONENT_H

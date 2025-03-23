@@ -1,5 +1,4 @@
-#ifndef WARZONECIVILISATION_MATERIALCONTAINER_COMPONENT_H
-#define WARZONECIVILISATION_MATERIALCONTAINER_COMPONENT_H
+#pragma once
 
 #include "wzc/ecs/component/entity/object_component.h"
 #include <unordered_map>
@@ -37,6 +36,3 @@ struct MaterialContainerComponent : wzc::ObjectComponent {
         Inventory inventory;
     };
 }
-
-
-#endif //WARZONECIVILISATION_MATERIALCONTAINER_COMPONENT_H
