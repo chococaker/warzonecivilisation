@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <wzc/namespaced_key.h>
 
 #include "wzc/handle/player_handle.h"
 
@@ -14,12 +14,12 @@ namespace wzc {
     // outside them as well. Make sure to use getUnstaged() or existsUnstaged() instead outside of
     // event scope, though.
     struct PlayerComponentHandle final {
-        PlayerComponentHandle(const PlayerHandle& owner, std::string id, Game* game);
+        PlayerComponentHandle(const PlayerHandle& owner, const NamespacedKey& key, Game* game);
         PlayerComponentHandle(const PlayerComponentHandle& other) = default;
         
         bool isValid() const; // false if the original game no longer exists
         
-        const std::string& getId() const;
+        const NamespacedKey& getComponentId() const;
         
         const Game* getGame() const;
         
@@ -37,7 +37,7 @@ namespace wzc {
 
     private:
         const PlayerHandle owner;
-        const std::string id;
+        const NamespacedKey componentKey;
         Game* game;
     };
 }

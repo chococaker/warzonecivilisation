@@ -8,12 +8,12 @@
 
 namespace wzc {
     PlayerComponentHandle::PlayerComponentHandle(const PlayerHandle& owner,
-                                                 std::string id,
+                                                 const NamespacedKey& key,
                                                  Game* game)
-            : owner(owner), id(std::move(id)), game(game) { }
+            : owner(owner), componentKey(key), game(game) { }
     
-    const std::string& PlayerComponentHandle::getId() const {
-        return id;
+    const NamespacedKey& PlayerComponentHandle::getComponentId() const {
+        return componentKey;
     }
     
     const Game* PlayerComponentHandle::getGame() const {
@@ -103,7 +103,7 @@ namespace wzc {
         const std::vector<PlayerComponent*>& components = owner.getFrom(gameState).getComponents();
 
         for (const PlayerComponent* component : components) {
-            if (component->getTypeId() == id) {
+            if (component->getTypeKey() == componentKey) {
                 return true;
             }
         }
@@ -118,11 +118,11 @@ namespace wzc {
         const std::vector<PlayerComponent*>& components = owner.getFrom(gameState).getComponents();
 
         for (PlayerComponent* component : components) {
-            if (component->getTypeId() == id) {
+            if (component->getTypeKey() == componentKey) {
                 return *component;
             }
         }
 
-        throw std::invalid_argument("Player component " + id + " does not exist");
+        throw std::invalid_argument("Player component " + to_string(componentKey) + " does not exist");
     }
 }

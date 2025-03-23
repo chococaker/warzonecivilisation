@@ -1,7 +1,8 @@
 #include "producer_component.h"
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string ProducerComponent::ID = "ocho@producer";
+    const wzc::NamespacedKey ProducerComponent::ID(NAMESPACE, "producer_component");
 
     ProducerComponent::ProducerComponent(const Inventory& productionPerTurn)
             : productionPerTurn(productionPerTurn) {}

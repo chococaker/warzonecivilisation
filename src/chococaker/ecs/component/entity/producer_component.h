@@ -11,8 +11,8 @@ struct ProducerComponent final :  wzc::ObjectComponent {
         
         Inventory productionPerTurn;
         
-        static const std::string ID;
-        const std::string& getTypeId() const override {
+        static const wzc::NamespacedKey ID;
+        const wzc::NamespacedKey& getTypeKey() const override {
             return ID;
         }
     };

@@ -25,9 +25,8 @@ namespace ccaker {
         uint16_t maxDistancePerFullMove;
         std::vector<uint8_t> traversableTileTypes;
 
-        static const std::string ID;
-
-        const std::string& getTypeId() const override {
+        static const wzc::NamespacedKey ID;
+        const wzc::NamespacedKey& getTypeKey() const override {
             return ID;
         }
 

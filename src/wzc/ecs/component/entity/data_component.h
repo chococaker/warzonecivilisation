@@ -19,7 +19,7 @@ namespace wzc {
             return new DataComponent();
         }
         
-        const std::string& getTypeId() const override {
+        const std::string& getTypeKey() const override {
             return ID;
         }
         

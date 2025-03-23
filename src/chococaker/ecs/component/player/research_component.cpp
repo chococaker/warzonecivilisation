@@ -1,8 +1,9 @@
 #include "research_component.h"
+#include "chococaker/name_space.h"
 #include <stdexcept>
 
 namespace ccaker {
-    const std::string ResearchComponent::ID = "pcho@research";
+    const wzc::NamespacedKey ResearchComponent::ID(NAMESPACE, "research_component");
 
     void ResearchComponent::progressTier() {
         if (tier == maxTier) {

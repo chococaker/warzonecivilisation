@@ -6,10 +6,10 @@ namespace ccaker {
     struct MoveSystem final : wzc::System {
         MoveSystem();
 
-        const std::string& getId() const override {
+        const wzc::NamespacedKey& getKey() const override {
             return ID;
         }
-        static const std::string ID;
+        static const wzc::NamespacedKey ID;
     private:
         static const wzc::SystemHandler onMove;
     };

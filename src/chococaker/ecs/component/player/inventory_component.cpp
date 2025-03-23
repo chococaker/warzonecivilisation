@@ -1,10 +1,11 @@
 #include "inventory_component.h"
+#include "chococaker/name_space.h"
 
 #include <algorithm>
 #include <utility>
 
 namespace ccaker {
-    const std::string InventoryComponent::ID = "pcho@inventory";
+    const wzc::NamespacedKey InventoryComponent::ID(NAMESPACE, "inventory_component");
     
     InventoryComponent::InventoryComponent(Inventory inventory)
             : inventory(std::move(inventory)) { }

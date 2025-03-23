@@ -1,9 +1,10 @@
 #include "movable_component.h"
+#include "chococaker/name_space.h"
 #include <algorithm>
 #include <stdexcept>
 
 namespace ccaker {
-    const std::string MovableComponent::ID = "ocho@movable";
+    const wzc::NamespacedKey MovableComponent::ID(NAMESPACE, "movable_component");
 
     MovableComponent::MovableComponent(uint16_t maxDistancePerFullMove,
                                        const std::vector<uint8_t>& traversableTileTypes,

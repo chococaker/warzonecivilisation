@@ -8,11 +8,10 @@
 #include "chococaker/ecs/component/entity/movable_component.h"
 #include "chococaker/ecs/component/entity/linearobstruction_component.h"
 #include "chococaker/util/event_error_util.h"
-
-#include <cmath>
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string MoveSystem::ID = "scho@move";
+    const wzc::NamespacedKey MoveSystem::ID(NAMESPACE, "move_system");
 
     void move(wzc::Event* ev, wzc::GameState* game) {
         auto* e = dynamic_cast<MoveEvent*>(ev);

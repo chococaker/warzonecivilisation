@@ -2,6 +2,7 @@
 
 #include <string>
 
+#include "wzc/namespaced_key.h"
 #include "wzc/handle/object_handle.h"
 
 namespace wzc {
@@ -14,12 +15,12 @@ namespace wzc {
     // outside them as well. Make sure to use getUnstaged() or existsUnstaged() instead outside of
     // event scope, though.
     struct ObjectComponentHandle final {
-        ObjectComponentHandle(const ObjectHandle& owner, std::string  id, Game* game);
+        ObjectComponentHandle(const ObjectHandle& owner, const NamespacedKey& key, Game* game);
         ObjectComponentHandle(const ObjectComponentHandle& other) = default;
         
         bool isValid() const; // false if the original game no longer exists
         
-        const std::string& getId() const;
+        const NamespacedKey& getComponentId() const;
         
         const Game* getGame() const;
         
@@ -37,7 +38,7 @@ namespace wzc {
     
     private:
         ObjectHandle owner;
-        std::string id;
+        NamespacedKey key;
         Game* game;
     };
 }

@@ -1,5 +1,6 @@
 #include "health_system.h"
 
+#include "chococaker/name_space.h"
 #include "chococaker/ecs/system/event/health_event.h"
 #include "wzc/ecs/system/event/end_event.h"
 #include "chococaker/ecs/system/event/generic_errors.h"
@@ -14,7 +15,7 @@
 #include <cmath>
 
 namespace ccaker {
-    const std::string HealthSystem::ID = "scho@health";
+    const wzc::NamespacedKey HealthSystem::ID(NAMESPACE, "health_system");
 
     void attack(wzc::Event* ev, wzc::GameState* game) {
         auto* e = dynamic_cast<DamageEvent*>(ev);

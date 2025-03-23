@@ -10,6 +10,9 @@ namespace wzc {
     
     struct PlayerPrefab {
         PlayerPrefab(std::string prefabId, const std::vector<PlayerComponent>& components);
+
+        const std::vector<const PlayerComponent*>& getComponents() const;
+
     private:
         mutable uint16_t instance = 0;
         

@@ -1,7 +1,7 @@
 #include "component_not_found.h"
 
 namespace wzc {
-    ComponentNotFound::ComponentNotFound(const std::string& componentTypeId)
-            : std::runtime_error("Component not found of ID " + componentTypeId),
-              componentTypeId(componentTypeId) {}
+    ComponentNotFound::ComponentNotFound(const NamespacedKey& componentTypeKey)
+            : std::runtime_error("Component not found of ID " + to_string(componentTypeKey)),
+              componentTypeId(componentTypeKey) {}
 }

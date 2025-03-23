@@ -10,11 +10,11 @@ namespace ccaker {
         HealEvent(uint16_t amountHeal,
                   const wzc::ObjectHandle& healedObj);
         
-        const std::string& getTypeId() const override {
+        const wzc::NamespacedKey& getTypeKey() const override {
             return ID;
         }
         
-        static const std::string ID;
+        static const wzc::NamespacedKey ID;
         
         uint16_t amountHeal;
         wzc::ObjectHandle healedObj;
@@ -26,11 +26,11 @@ namespace ccaker {
                     const wzc::ObjectHandle& attacked)
                 : damage(damage), attacker(attacker), attacked(attacked) { }
         
-        const std::string& getTypeId() const override {
+        const wzc::NamespacedKey& getTypeKey() const override {
             return ID;
         }
         
-        static const std::string ID;
+        static const wzc::NamespacedKey ID;
         
         const uint16_t damage;
         const wzc::ObjectHandle& attacker;
@@ -38,10 +38,10 @@ namespace ccaker {
     };
     
     struct OverhealEventError final : wzc::EventError {
-        const std::string& getTypeId() const override {
+        const wzc::NamespacedKey& getTypeKey() const override {
             return ID;
         }
         
-        static const std::string ID;
+        static const wzc::NamespacedKey ID;
     };
 }

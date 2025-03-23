@@ -1,8 +1,9 @@
 #include "healthy_component.h"
 #include <algorithm>
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string HealthyComponent::ID = "ocho@healthy";
+    const wzc::NamespacedKey HealthyComponent::ID(NAMESPACE, "healthy_component");
     
     HealthyComponent::HealthyComponent(const uint16_t maxHealth)
             : HealthyComponent(maxHealth, maxHealth) {}

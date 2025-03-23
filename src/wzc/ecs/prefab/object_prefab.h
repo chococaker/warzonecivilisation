@@ -16,6 +16,9 @@ namespace wzc {
         
         std::string getOriginalId() const;
         const std::string& getModifiedId() const;
+
+        const std::vector<const ObjectComponent*>& getComponents() const;
+
     private:
         mutable uint16_t instance = 0;
         

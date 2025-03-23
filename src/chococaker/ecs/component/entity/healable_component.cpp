@@ -1,9 +1,11 @@
 #include "healable_component.h"
 
+#include "chococaker/name_space.h"
+
 #include <utility>
 
 namespace ccaker {
-    const std::string HealableComponent::ID = "ocho@healable";
+    const wzc::NamespacedKey HealableComponent::ID(NAMESPACE, "healable_component");
     
     HealableComponent::HealableComponent(Inventory fullHealCost)
             : fullHealCost(std::move(fullHealCost)) { }

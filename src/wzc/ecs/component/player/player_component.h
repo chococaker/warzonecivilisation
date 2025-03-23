@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <wzc/namespaced_key.h>
 
 namespace wzc {
     struct PlayerComponent {
@@ -8,18 +8,6 @@ namespace wzc {
         virtual void deleteBase() const {}
         virtual ~PlayerComponent() = default;
 
-        /**
-         * Check id_wisdom.txt for more information.
-         */
-        virtual const std::string& getTypeId() const = 0;
-
-
-        /**
-         * @return The component ID, not including type information (everything before the @)
-         */
-        std::string getStrippedId() const {
-            const std::string& typeId = getTypeId();
-            return typeId.substr(typeId.find('@'));
-        }
+        virtual const NamespacedKey& getTypeKey() const = 0;
     };
 }

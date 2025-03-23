@@ -1,5 +1,6 @@
 #pragma once
 
+#include "wzc/namespaced_key.h"
 #include "event.h"
 
 namespace wzc {
@@ -9,10 +10,10 @@ namespace wzc {
     struct EndEvent final : Event {
         EndEvent() = default;
         
-        const std::string& getTypeId() const override {
+        const NamespacedKey& getTypeKey() const override {
             return ID;
         }
         
-        static const std::string ID;
+        static const NamespacedKey ID;
     };
 }

@@ -1,7 +1,8 @@
 #include "limited_component.h"
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string LimitedComponent::ID = "ocho@limited";
+    const wzc::NamespacedKey LimitedComponent::ID(NAMESPACE, "limited_component");
 
     LimitedComponent::LimitedComponent(uint16_t turnsLeft)
             : turnsLeft(turnsLeft) {}

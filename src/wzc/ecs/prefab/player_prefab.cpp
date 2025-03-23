@@ -13,4 +13,8 @@ namespace wzc {
             this->components.push_back(component.clone());
         }
     }
+
+    const std::vector<const PlayerComponent*>& PlayerPrefab::getComponents() const {
+        return components;
+    }
 }

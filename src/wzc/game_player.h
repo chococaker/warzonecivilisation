@@ -21,17 +21,17 @@ namespace wzc {
 
         const std::vector<PlayerComponent*>& getComponents() const;
 
-        PlayerComponent& getComponent(const std::string& componentTypeId) const;
+        PlayerComponent& getComponent(const NamespacedKey& componentTypeId) const;
 
         template<typename T>
-        T& getComponent(const std::string& componentTypeId);
+        T& getComponent(const NamespacedKey& componentTypeId);
 
         // attaches a component to the player. overrides previous component if it exists
         void attachComponent(const PlayerComponent& component);
 
-        void removeComponent(const std::string& componentTypeId);
+        void removeComponent(const NamespacedKey& componentTypeId);
 
-        bool hasComponent(const std::string& componentTypeId) const;
+        bool hasComponent(const NamespacedKey& componentTypeId) const;
     
     private:
         std::string id;
@@ -40,14 +40,14 @@ namespace wzc {
     };
 
     template<typename T>
-    T& GamePlayer::getComponent(const std::string& componentTypeId) {
+    T& GamePlayer::getComponent(const NamespacedKey& componentTypeId) {
         PlayerComponent& component = getComponent(componentTypeId);
 
         try {
             T& t = dynamic_cast<T&>(component);
             return t;
         } catch (const std::bad_cast&) {
-            throw std::invalid_argument("Object component " + componentTypeId + " is not of the requested template type");
+            throw std::invalid_argument("Object component " + to_string(componentTypeId) + " is not of the requested template type");
         }
     }
 }

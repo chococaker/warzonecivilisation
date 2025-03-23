@@ -2,6 +2,8 @@
 
 #include "event.h"
 
+#include "wzc/namespaced_key.h"
+
 namespace wzc {
     struct GameState;
 
@@ -9,10 +11,10 @@ namespace wzc {
     struct StartEvent final : Event {
         StartEvent() = default;
         
-        const std::string& getTypeId() const override {
+        const NamespacedKey& getTypeKey() const override {
             return ID;
         }
         
-        static const std::string ID;
+        static const NamespacedKey ID;
     };
 }

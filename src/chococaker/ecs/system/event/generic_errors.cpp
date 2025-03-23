@@ -1,33 +1,27 @@
 #include "generic_errors.h"
 #include "wzc/game_player.h"
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string ComponentNeededError::ID = "rcho@component_needed";
-    const std::string TooExpensiveError::ID = "rcho@too_expensive";
-    const std::string InvalidPlayerError::ID = "rcho@invalid_player";
-    const std::string InvalidObjectError::ID = "rcho@invalid_object";
-    const std::string OutOfRangeError::ID = "rcho@out_of_range";
-    const std::string ResourceLimitExceededError::ID = "rcho@resource_limit_exceeded";
-    const std::string EnteredBadZoneError::ID = "rcho@entered_bad_zone";
+    const wzc::NamespacedKey ComponentNeededError::ID(NAMESPACE, "component_needed_error");
+    const wzc::NamespacedKey TooExpensiveError::ID(NAMESPACE, "too_expensive_error");
+    const wzc::NamespacedKey InvalidPlayerError::ID(NAMESPACE, "invalid_player_error");
+    const wzc::NamespacedKey InvalidObjectError::ID(NAMESPACE, "invalid_object_error");
+    const wzc::NamespacedKey OutOfRangeError::ID(NAMESPACE, "out_of_range_error");
+    const wzc::NamespacedKey ResourceLimitExceededError::ID(NAMESPACE, "resource_limit_exceeded_error");
+    const wzc::NamespacedKey EnteredBadZoneError::ID(NAMESPACE, "entered_bad_zone_error");
 
     ComponentNeededError::ComponentNeededError(const std::string& ownerId,
-                                               bool isPlayer,
-                                               const std::string& componentId)
-        : ownerId(ownerId), componentId(componentId), player(isPlayer) {
-    }
-
-    bool ComponentNeededError::isPlayer() const {
-        return player;
-    }
-
-    bool ComponentNeededError::isObject() const {
-        return !player;
+                                               const wzc::NamespacedKey& componentId)
+        : EventError(ownerId + " requires component " + to_string(componentId)),
+          ownerId(ownerId), componentId(componentId) {
     }
 
     TooExpensiveError::TooExpensiveError(const std::string& material,
                                          uint32_t amountHad,
                                          uint32_t amountNeeded)
-        : material(material), amountHad(amountHad), amountNeeded(amountNeeded) {
+        : EventError("Need " + std::to_string(amountNeeded) + " of " + material + ", have " + std::to_string(amountHad)),
+          material(material), amountHad(amountHad), amountNeeded(amountNeeded) {
     }
 
     InvalidPlayerError::InvalidPlayerError(const std::string& playerId, const std::string& where)

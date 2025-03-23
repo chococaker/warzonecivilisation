@@ -1,7 +1,9 @@
 #include "costlyperturn_component.h"
 
+#include "chococaker/name_space.h"
+
 namespace ccaker {
-    const std::string CostlyPerTurnComponent::ID = "ocho@costly_per_turn";
+    const wzc::NamespacedKey CostlyPerTurnComponent::ID(NAMESPACE, "costlyperturn_component");
 
     CostlyPerTurnComponent::CostlyPerTurnComponent(const Inventory& costPerTurn)
             : costPerTurn(costPerTurn) {}

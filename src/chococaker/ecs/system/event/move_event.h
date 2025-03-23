@@ -9,11 +9,11 @@ namespace ccaker {
         MoveEvent(const wzc::ObjectHandle& movedObj,
                   const wzc::math::Point2D& to);
 
-        const std::string& getTypeId() const override {
+        const wzc::NamespacedKey& getTypeKey() const override {
             return ID;
         }
 
-        static const std::string ID;
+        static const wzc::NamespacedKey ID;
 
         const wzc::ObjectHandle& movedObj;
         const wzc::math::Point2D to;

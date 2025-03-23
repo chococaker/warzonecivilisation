@@ -1,8 +1,8 @@
 #include "attacker_component.h"
-#include <stdexcept>
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string AttackerComponent::ID = "ocho@attacker";
+    const wzc::NamespacedKey AttackerComponent::ID(NAMESPACE, "attacker_component");
 
     AttackerComponent::AttackerComponent(const uint16_t range) : range(range), hasAttacked(false) {}
 

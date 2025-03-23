@@ -147,10 +147,10 @@ namespace wzc {
     }
 
     PlayerComponentHandle Game::asHandle(const GamePlayer& owner, const PlayerComponent& component) {
-        return {asHandle(owner), component.getTypeId(), this};
+        return {asHandle(owner), component.getTypeKey(), this};
     }
 
     ObjectComponentHandle Game::asHandle(const GameObject& owner, const ObjectComponent& component) {
-        return {asHandle(owner), component.getTypeId(), this};
+        return {asHandle(owner), component.getTypeKey(), this};
     }
 }

@@ -1,7 +1,8 @@
 #include "rangedcreation_component.h"
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string RangedCreationComponent::ID = "ocho@ranged_creation";
+    const wzc::NamespacedKey RangedCreationComponent::ID(NAMESPACE, "ranged_creation_component");
 
     RangedCreationComponent::RangedCreationComponent(uint16_t radius)
             : radius(radius) {}

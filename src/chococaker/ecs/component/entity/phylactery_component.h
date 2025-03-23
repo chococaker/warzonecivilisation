@@ -7,9 +7,9 @@ namespace ccaker {
     struct PhylacteryComponent final :  wzc::ObjectComponent {
         [[nodiscard]] ObjectComponent* clone() const override;
         
-        static const std::string ID;
+        static const wzc::NamespacedKey ID;
         
-        const std::string& getTypeId() const override {
+        const wzc::NamespacedKey& getTypeKey() const override {
             return ID;
         }
     };

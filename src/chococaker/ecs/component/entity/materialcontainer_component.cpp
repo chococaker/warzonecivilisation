@@ -1,8 +1,8 @@
 #include "materialcontainer_component.h"
-#include <stdexcept>
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string MaterialContainerComponent::ID = "ocho@material_container";
+    const wzc::NamespacedKey MaterialContainerComponent::ID(NAMESPACE, "materialcontainer_component");
 
     MaterialContainerComponent::MaterialContainerComponent(const Inventory& inventory)
             : inventory(inventory) { }

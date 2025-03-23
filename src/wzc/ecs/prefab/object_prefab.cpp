@@ -25,4 +25,8 @@ namespace wzc {
     const std::string& ObjectPrefab::getModifiedId() const {
         return prefabId;
     }
+
+    const std::vector<const ObjectComponent*>& ObjectPrefab::getComponents() const {
+        return components;
+    }
 }

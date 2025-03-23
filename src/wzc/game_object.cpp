@@ -33,21 +33,21 @@ namespace wzc {
         return components;
     }
 
-    ObjectComponent& GameObject::getComponent(const std::string& componentTypeId) const {
+    ObjectComponent& GameObject::getComponent(const NamespacedKey& componentTypeKey) const {
         for (ObjectComponent* component : components) {
-            if (component->getTypeId() == componentTypeId) {
+            if (component->getTypeKey() == componentTypeKey) {
                 return *component;
             }
         }
 
-        throw ComponentNotFound(componentTypeId);
+        throw ComponentNotFound(componentTypeKey);
     }
 
     void GameObject::attachComponent(const ObjectComponent& component) {
         // check if component is already in components
         size_t index = 0;
         for (const ObjectComponent* ownedComponent : components) {
-            if (ownedComponent->getTypeId() == component.getTypeId()) {}
+            if (ownedComponent->getTypeKey() == component.getTypeKey()) {}
             index++;
         }
 
@@ -60,16 +60,16 @@ namespace wzc {
         }
     }
 
-    void GameObject::removeComponent(const std::string& componentTypeId) {
+    void GameObject::removeComponent(const NamespacedKey& componentTypeKey) {
         components.erase(std::remove_if(components.begin(), components.end(),
-            [componentTypeId](const ObjectComponent* component) {
-                return component->getTypeId() == componentTypeId;
+            [componentTypeKey](const ObjectComponent* component) {
+                return component->getTypeKey() == componentTypeKey;
             }), components.end());
     }
 
-    bool GameObject::hasComponent(const std::string& componentTypeId) const {
+    bool GameObject::hasComponent(const NamespacedKey& componentTypeKey) const {
         for (const ObjectComponent* component : components) {
-            if (component->getTypeId() == componentTypeId) {
+            if (component->getTypeKey() == componentTypeKey) {
                 return true;
             }
         }

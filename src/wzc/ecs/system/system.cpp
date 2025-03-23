@@ -5,57 +5,57 @@
 #include <utility>
 
 namespace wzc {
-    System::System(std::string id,
+    System::System(const NamespacedKey& key,
                    const SystemHandlerSet& addedHandlers,
-                   const std::unordered_set<std::string>& before,
-                   const std::unordered_set<std::string>& after)
-            : id(std::move(id)), before(before), after(after) {
-        for (const auto& handler : addedHandlers) {
-            if (handlers.count(handler.handledEventId)) {
-                throw std::invalid_argument("Duplicate handler event ID: " + handler.handledEventId);
+                   const std::unordered_set<NamespacedKey, NamespacedKeyHash>& before,
+                   const std::unordered_set<NamespacedKey, NamespacedKeyHash>& after)
+        : key(key), handlers(addedHandlers.size()), before(before), after(after) {
+        for (const auto& handler: addedHandlers) {
+            if (handlers.count(handler.handledEventKey)) {
+                throw std::invalid_argument("Duplicate handler event ID: " + to_string(handler.handledEventKey));
             }
-            
-            handlers.insert({handler.handledEventId, handler});
+
+            handlers.insert({handler.handledEventKey, handler});
         }
-        
-        for (const std::string& system : before) {
+
+        for (const NamespacedKey& system: before) {
             if (after.count(system))
-                throw std::invalid_argument("Duplicate system in before & after: " + system);
+                throw std::invalid_argument("Duplicate system in before & after: " + system.key);
         }
     }
 
-    SystemHandler::SystemHandler(const std::string& handledEventId,
+    SystemHandler::SystemHandler(const NamespacedKey& handledEventId,
                                  const std::function<void(Event*, GameState*)>& handleFunction,
                                  bool handleCancelled)
-            : handledEventId(handledEventId), handleFunction(handleFunction), handleCancelled(handleCancelled) { }
+            : handledEventKey(handledEventId), handleFunction(handleFunction), handleCancelled(handleCancelled) { }
     
     bool SystemHandler::operator==(const SystemHandler& other) const {
-        return handledEventId == other.handledEventId;
+        return handledEventKey == other.handledEventKey;
     }
     
     void System::handle(Event* e, GameState* gameState) const {
         assert(e != nullptr);
         
-        if (handlers.count(e->getTypeId())) { // if handler exists
-            if (const SystemHandler& handler = handlers.at(e->getTypeId()); !handler.handleCancelled && !e->cancelled) { // handler operates when cancelled
+        if (handlers.count(e->getTypeKey())) { // if handler exists
+            if (const SystemHandler& handler = handlers.at(e->getTypeKey()); !handler.handleCancelled && !e->cancelled) { // handler operates when cancelled
                 return handler.handleFunction(e, gameState);
             }
         }
     }
     
-    const std::string& System::getId() const {
-        return id;
+    const NamespacedKey& System::getKey() const {
+        return key;
     }
     
-    const std::unordered_set<std::string>& System::getBefore() const {
+    const std::unordered_set<NamespacedKey, NamespacedKeyHash>& System::getBefore() const {
         return before;
     }
     
-    const std::unordered_set<std::string>& System::getAfter() const {
+    const std::unordered_set<NamespacedKey, NamespacedKeyHash>& System::getAfter() const {
         return after;
     }
     
     size_t SystemHandlerHash::operator()(const SystemHandler& handler) const noexcept {
-        return std::hash<std::string>{}(handler.handledEventId);
+        return NamespacedKeyHash{}(handler.handledEventKey);
     }
 }

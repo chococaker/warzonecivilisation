@@ -64,8 +64,8 @@ namespace wzc {
         PlayerComponentHandle asHandle(const GamePlayer& owner, const PlayerComponent& component);
         ObjectComponentHandle asHandle(const GameObject& owner, const ObjectComponent& component);
 
-        std::vector<GamePlayer*> getPlayersWith(const std::string& componentId);
-        std::vector<GameObject*> getObjectsWith(const std::string& componentId);
+        std::vector<GamePlayer*> getPlayersWith(const NamespacedKey& componentId);
+        std::vector<GameObject*> getObjectsWith(const NamespacedKey& componentId);
 
         ~GameState();
     private:

@@ -1,7 +1,8 @@
 #include "bought_component.h"
+#include "chococaker/name_space.h"
 
 namespace ccaker {
-    const std::string BoughtComponent::ID = "ocho@bought";
+    const wzc::NamespacedKey BoughtComponent::ID(NAMESPACE, "bought_component");
 
     BoughtComponent::BoughtComponent(const Inventory& cost)
             : cost(cost) {}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+#include "wzc/namespaced_key.h"
 
 namespace wzc {
     struct Game;
@@ -9,7 +10,7 @@ namespace wzc {
     struct Event {
         Event() : cancelled(false) {}
         
-        virtual const std::string& getTypeId() const = 0;
+        virtual const NamespacedKey& getTypeKey() const = 0;
         virtual ~Event() = default;
 
         bool cancelled;
@@ -19,7 +20,7 @@ namespace wzc {
         EventError() : std::runtime_error("An event error occurred") {}
         explicit EventError(const std::string& what) : std::runtime_error(what) {}
         
-        virtual const std::string& getTypeId() const = 0;
+        virtual const NamespacedKey& getTypeKey() const = 0;
         
         // event only becomes available after it is returned by GameState
         Event* getEvent() const { return event; }

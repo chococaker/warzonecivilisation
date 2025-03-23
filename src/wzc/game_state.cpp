@@ -170,7 +170,7 @@ namespace wzc {
         return game->asHandle(owner, component);
     }
 
-    std::vector<GamePlayer*> GameState::getPlayersWith(const std::string& componentId) {
+    std::vector<GamePlayer*> GameState::getPlayersWith(const NamespacedKey& componentId) {
         std::vector<GamePlayer*> result;
 
         for (GamePlayer& player : players) {
@@ -180,7 +180,7 @@ namespace wzc {
         return result;
     }
 
-    std::vector<GameObject*> GameState::getObjectsWith(const std::string& componentId) {
+    std::vector<GameObject*> GameState::getObjectsWith(const NamespacedKey& componentId) {
         std::vector<GameObject*> result;
 
         for (GameObject& object : objects) {
